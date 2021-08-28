@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-md-9 col-sm-6 col-xs-12">
+  <div class="card mt-3  border-primary">
+    <div class="card-header text-center text-white bg-primary "> nouveau Produit</div>
+
+    <div class="card-body">
+      <form [formGroup]="this.produitService.formData" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label  class="control-label" >Nom</label>
+          <input class="form-control" type="text" formControlName="nom" >
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Description</label>
+          <input class="form-control" type="text" formControlName="description" >
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Prixunitaire</label>
+          <input class="form-control" type="text" formControlName="prixunitaire">
+
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >photo</label>
+          <input class="form-control" type="file" (change)="onSelectFile($event)" >
+          <button class="btn btn-success" (click)="upload()">Telecharger</button>
+          {{progres}}
+        </div>
+
+        <div class="form-group mt-3">
+          <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-database"></i> Enregistrer</button>
+          <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+

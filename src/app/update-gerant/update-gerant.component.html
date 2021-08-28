@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="col-md-9 col-sm-6 col-xs-12">
+  <div class="card mt-3  border-primary">
+    <div class="card-header text-center text-white bg-primary "> Modifer Gerant</div>
+
+    <div class="card-body">
+      <form [formGroup]="this.gerantService.formData" (ngSubmit)="onSubmite()">
+        <div class="form-group">
+          <label  class="control-label" >Nom</label>
+          <input class="form-control" type="text" formControlName="nom" id="nom">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Prenom</label>
+          <input class="form-control" type="text" formControlName="prenom" id="prenom">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Addresse</label>
+          <input class="form-control" type="text" formControlName="addresse" id="addresse">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Telephone</label>
+          <input class="form-control" type="text" formControlName="telephone" id="telephone">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Email</label>
+          <input class="form-control" type="text" formControlName="email" id="email">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Civilite</label>
+          <input class="form-control" type="text" formControlName="civilite" id="civilite">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Genre</label>
+          <input class="form-control" type="text" formControlName="genre" id="genre">
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Cni</label>
+          <input class="form-control" type="text" formControlName="cni" id="cni">
+        </div>
+
+        <div class="form-group mt-3">
+          <button class="btn btn-success" type="submit"><i class="fa fa-database"></i> Enregistrer</button>
+          <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+

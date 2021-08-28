@@ -10,16 +10,15 @@ import { CategorieService } from '../services/categorie.service';
   styleUrls: ['./list-categorie.component.css']
 })
 export class ListCategorieComponent implements OnInit {
-  public categories:any;
-  constructor( private categorieService:CategorieService ,private route:Router) { }
-
+  constructor( public categorieService:CategorieService ,private route:Router) { }
+categorie!:Categorie
   ngOnInit(): void {
     this.getCategorie();
 
   }
   public getCategorie(){
     this.categorieService.getCategorie()
-    .subscribe(data=>{this.categories=data},
+    .subscribe(data=>{this.categorieService.list=data},
       err=>{console.log(err)})
   }
   onEditCategorie(c: any){

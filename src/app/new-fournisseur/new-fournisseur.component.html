@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-md-9 col-sm-6 col-xs-12">
+  <div class="card mt-3  border-primary">
+    <div class="card-header text-center text-white bg-primary "> nouveau Categorie</div>
+
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSaveFournisseur(f.value)">
+        <div class="form-group">
+          <label  class="control-label" >Nom</label>
+          <input class="form-control" type="text" name="nom" ngModel>
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Prenom</label>
+          <input class="form-control" type="text" name="prenom" ngModel>
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Addresse</label>
+          <input class="form-control" type="text" name="addresse" ngModel>
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Telephone</label>
+          <input class="form-control" type="text" name="telephone" ngModel>
+        </div>
+        <div class="form-group">
+          <label  class="control-label" >Email</label>
+          <input class="form-control" type="text" name="email" ngModel>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-success" type="submit">Enregistrer</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+

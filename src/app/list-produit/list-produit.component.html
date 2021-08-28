@@ -1,1 +1,40 @@
-<p>list-produit works!</p>
+<div class="container mt-3">
+  <div class="card-body">
+    <a class="btn btn-primary" routerLink="/addproduit" >New Produit</a>
+  </div>
+  <div class="row">
+  <div class="col-md-3">
+   <ul class="list-group" *ngIf="categories">
+     <li class="list-group-item" *ngFor="let c of categories">
+      <a > {{c.nom}}</a>
+
+     </li>
+   </ul>
+  </div>
+  <div class="col-md-9">
+    <div  *ngIf="produitService.list" class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let p of produitService.list" class="col">
+        <div class="card h-100 border-primary">
+          <img src="..." class="card-img-top" alt="image+card">
+          <div class="card-body tex">
+            <h5 class="card-title">{{p.nom}}</h5>
+            <p class="card-text">Description:{{p.description}} </p>
+            <p class="card-text float-end">Prix:{{p.prixunitaire}}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">
+              <a href="#" class="btn btn-outline-info">Button</a>
+              <a href="#" class="btn btn-outline-info float-end">Button</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+
+</div>
+</div>
+

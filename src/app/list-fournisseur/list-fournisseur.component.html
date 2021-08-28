@@ -1,1 +1,40 @@
-<p>list-fournisseur works!</p>
+<div class="container">
+  <div class="card mt-3  border-primary">
+    <div class="card-header text-center text-white bg-primary "> Listes FournisseurS</div>
+    <div class="card-body">
+      <a class="btn btn-primary" routerLink="/addfournisseur" >New Fournisseur</a>
+    </div>
+    <div class="card-body">
+      <table  *ngIf="fournisseurService.list" class="table table-striped" >
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Addresse</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of fournisseurService.list">
+            <td>{{c.id}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.prenom}}</td>
+            <td>{{c.addresse}}</td>
+            <td>{{c.telephone}}</td>
+            <td>{{c.email}}</td>
+            <td><button class="btn btn-warning" (click)="SelectFournisseur(c)"  >
+              <i class="fa fa-pencil-square-o"></i>
+            </button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet>
+
+</router-outlet>
