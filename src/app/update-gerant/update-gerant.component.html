@@ -25,19 +25,31 @@
           <label  class="control-label" >Email</label>
           <input class="form-control" type="text" formControlName="email" id="email">
         </div>
-        <div class="form-group">
-          <label  class="control-label" >Civilite</label>
-          <input class="form-control" type="text" formControlName="civilite" id="civilite">
+        <div class="row">
+          <div class="form-group col-3">
+            <label>Civilite</label>
+                      <select formControlName="civilite" class="form-control" id="civilite" >
+                          <option value=""></option>
+                          <option value="Mr" selected>Mr</option>
+                          <option value="Mrs">Mrs</option>
+                          <option value="Miss">Miss</option>
+                          <option value="Ms">Ms</option>
+                      </select>
+  
+          </div>
+          <div class="form-group col-3">
+            <label  class="control-label" >Genre</label>
+            <select formControlName="genre" class="form-control" id="genre" >
+              <option value=""></option>
+              <option value="M" selected>Masculin</option>
+              <option value="F">Feminin</option>
+          </select>
+          </div>
+          <div class="form-group col-6">
+            <label  class="control-label" >Cni</label>
+            <input class="form-control" type="text" formControlName="cni" id="cni">
+          </div>
         </div>
-        <div class="form-group">
-          <label  class="control-label" >Genre</label>
-          <input class="form-control" type="text" formControlName="genre" id="genre">
-        </div>
-        <div class="form-group">
-          <label  class="control-label" >Cni</label>
-          <input class="form-control" type="text" formControlName="cni" id="cni">
-        </div>
-
         <div class="form-group mt-3">
           <button class="btn btn-success" type="submit"><i class="fa fa-database"></i> Enregistrer</button>
           <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>

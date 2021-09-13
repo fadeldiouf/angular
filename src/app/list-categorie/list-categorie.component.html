@@ -2,7 +2,7 @@
   <div class="card mt-3  border-primary">
     <div class="card-header text-center text-white bg-primary "> Listes Categories</div>
     <div class="card-body">
-      <a class="btn btn-primary" routerLink="/addcategorie" >New Categorie</a>
+      <a class="btn btn-primary" routerLink="/addcategorie" ><i class="fa fa-plus"> New Categories</i></a>
     </div>
     <div class="card-body">
       <table  *ngIf="categorieService.list" class="table table-striped" >
@@ -17,9 +17,11 @@
         <tbody>
           <tr *ngFor="let c of categorieService.list">
             <td>{{c.id}}</td>
-            <td>{{c.description}}</td>
             <td>{{c.nom}}</td>
-            <td><a class="btn btn-success"  >Editer</a></td>
+            <td>{{c.description}}</td>
+            <td><button class="btn btn-warning" (click)="SelectCategorie(c)"  >
+              <i class="fa fa-pencil-square-o"></i>
+            </button></td>
           </tr>
 
         </tbody>

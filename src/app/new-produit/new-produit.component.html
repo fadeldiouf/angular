@@ -1,10 +1,10 @@
-<div class="container">
+<!-- <div class="container">
   <div class="col-md-9 col-sm-6 col-xs-12">
   <div class="card mt-3  border-primary">
     <div class="card-header text-center text-white bg-primary "> nouveau Produit</div>
 
     <div class="card-body">
-      <form [formGroup]="this.produitService.formData" (ngSubmit)="onSubmit()">
+      <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label  class="control-label" >Nom</label>
           <input class="form-control" type="text" formControlName="nom" >
@@ -20,9 +20,8 @@
         </div>
         <div class="form-group">
           <label  class="control-label" >photo</label>
-          <input class="form-control" type="file" (change)="onSelectFile($event)" >
-          <button class="btn btn-success" (click)="upload()">Telecharger</button>
-          {{progres}}
+          <input class="form-control" type="file" (change)="OnSelectFile($event)" >
+
         </div>
 
         <div class="form-group mt-3">
@@ -37,4 +36,4 @@
 </div>
 
 
-
+ -->

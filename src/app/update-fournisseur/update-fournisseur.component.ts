@@ -35,7 +35,7 @@ export class UpdateFournisseurComponent implements OnInit {
   onSubmite(){
    this.fournisseurService.updateFourniseur(this.fournisseurService.formData.value.id, this.fournisseurService.formData.value)
    .subscribe(data=>{console.log(data);
-    this.route.navigateByUrl("/fournsseur")
+    this.route.navigateByUrl("/fournisseur")
   })
   }
 

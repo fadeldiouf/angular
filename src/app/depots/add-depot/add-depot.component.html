@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="col-md-9 col-sm-6 col-xs-12">
+    <div class="card mt-3  border-primary">
+      <div class="card-header text-center text-white bg-primary "> nouveau Depot</div>
+  
+      <div class="card-body">
+        <form [formGroup]="this.depotService.formData" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label  class="control-label" >Libelle</label>
+            <input class="form-control" type="text" formControlName="libelle" id="libelle" required >
+          </div>
+          <div class="form-group">
+            <label  class="control-label" >Date</label>
+            <input class="form-control" type="date" formControlName="date"  id="date" required >
+          </div>
+          <div class="form-group">
+            <label  class="control-label" >Quantiteinitiale</label>
+            <input class="form-control" type="text" formControlName="quantiteinitial" id="quantiteinitial" required >
+          </div>
+          <div class="form-group">
+            <label  class="control-label" >quantitecourant</label>
+            <input class="form-control" type="text" formControlName="quantitecourant" id="quantitecourant" required >
+          </div>
+          <div class="form-group">
+            <label >Gerant</label>
+            <select class="form-control" type="text" formControlName="fournisseur" (ngModelChange)="onChange($event)" id="fournisseur" required>
+             <option value="0">-Selectionner</option>
+  
+             <option *ngFor="let item of fournisseurs" value="{{item.id}}"
+             >{{item.nom}}{{item.prenom}}</option>
+            </select>
+          </div>
+          <div class="form-group mt-3">
+            <button class="btn btn-success btn-sm" type="submit" [disabled]="this.depotService.formData.invalid"><i class="fa fa-database"></i> Enregistrer</button>
+            <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>
+          </div>
+        </form>
+  
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  
+  

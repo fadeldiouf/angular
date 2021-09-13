@@ -12,6 +12,7 @@ import { MagasinService } from '../services/magasin.service';
 })
 export class ListMagasinComponent implements OnInit {
 magasin!:Magasin;
+magasins!:Magasin[];
  control: FormControl= new FormControl('');
  p:number=1;
   constructor( public magasinService:MagasinService, public toastr:ToastrService,
@@ -23,11 +24,13 @@ magasin!:Magasin;
   }
 getMagasin(){
   this.magasinService.getAll()
-  .subscribe(data=>{this.magasinService.list=data},
+  .subscribe(data=>{
+    this.magasinService.list = data
+  this.magasins = data
+  console.log(this.magasins)},
     err=>{console.log(err)})
 }
 SelectMagasin(data:Magasin){
-  this.magasinService.choixmenu='M'
   this.magasinService.formData=this.formBuilder.group(Object.assign({},data))
   this.route.navigateByUrl("/updatemagasin")
 

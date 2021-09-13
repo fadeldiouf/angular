@@ -7,5 +7,5 @@ export class Magasin {
   addresse!: string;
   telephone!: string;
   email!: string;
-  gerant!:Gerant;
+  gerant!: Gerant;
 }

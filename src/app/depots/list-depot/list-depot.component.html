@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="card mt-3  border-primary">
+    <div class="card-header text-center text-white bg-primary "> Listes Depot</div>
+    <div class="card-body">
+      <a class="btn btn-primary" routerLink="/adddepot" ><i class="fa fa-plus"> New depot</i></a>
+    </div>
+    <div class="card-body">
+      <table  class="table table-striped" >
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Date</th>
+            <th scope="col">Quantiteinitial</th>
+            <th scope="col">Quantitecourant</th>
+            <th scope="col">fournisseur</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let c of depotService.list">
+            <td>{{c.id}}</td>
+            <td>{{c.libelle}}</td>
+            <td>{{c.date}}</td>
+            <td>{{c.quantiteinitial}}</td>
+            <td>{{c.quantitecourant}}</td>
+            <td>{{c.fournisseur.nom}}</td>
+            <td><button class="btn btn-warning" (click)="SelectDepot(c)"  >
+              <i class="fa fa-pencil-square-o"></i>
+            </button></td>
+            </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

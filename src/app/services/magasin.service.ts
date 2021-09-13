@@ -16,8 +16,8 @@ private host="http://localhost:8091/magasins"
  public getMagasin(id:number):Observable<object>{
     return this.httpClient.get(`${this.host}/${id}`)
   }
-public  createMagasin(data:object):Observable<object>{
-    return this.httpClient.post(`${this.host+"/save"}`,data)
+public  createMagasin(data:Magasin):Observable<Magasin>{
+    return this.httpClient.post<Magasin>(`${this.host+"/save"}`,data)
   }
  public updateMagasin(id:number,value:any):Observable<object>{
     return this.httpClient.put(`${this.host+"/update"}/${id}`,value)

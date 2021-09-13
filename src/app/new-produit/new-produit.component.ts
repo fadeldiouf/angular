@@ -1,7 +1,10 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Categorie } from '../categorie';
+import { Produit } from '../models/produit';
+import { CategorieService } from '../services/categorie.service';
 import { ProduitService } from '../services/produit.service';
 
 @Component({
@@ -10,56 +13,44 @@ import { ProduitService } from '../services/produit.service';
   styleUrls: ['./new-produit.component.css']
 })
 export class NewProduitComponent implements OnInit {
-  public selectFile:any;
-  public progres:any;
-  public currenceFileUpload:any
-  public produit:any
-
-  constructor( public produitService:ProduitService,
+  selectedFile:any;
+  progress:any;
+  currentFile:any;
+  produit!:Produit;
+  categorie!:Categorie;
+  categories!:Categorie[];
+produitForm!: FormGroup;
+  constructor( public produitService:ProduitService,public categorieService:CategorieService,
     public route:Router, public formBuilder:FormBuilder
     ) { }
 
   ngOnInit(): void {
-    this.infoForm();
-  }
-  infoForm(){
-    this.produitService.formData=this.formBuilder.group({
-      nom:['',[Validators.required]],
-      description:['',[Validators.required]],
-      prixunitaire:['',[Validators.required]],
-      phot:['',[Validators.required]],
-    }
-
+    this.produitForm=this.formBuilder.group(
+      {
+        nom:['',[Validators.required]],
+        description:['',[Validators.required]],
+        prixunitaire:['',[Validators.required]],
+        photo:['',[Validators.required]],
+      }
     )
+
   }
-  resetForm(){
-    this.produitService.formData.reset
+  OnSelectFile(envent:any): void{
+    this.selectedFile =envent.target.files
   }
-  onSubmit(){
-    this.produitService.createProduit(this.produitService.formData.value)
-    .subscribe(data=>{console.log(data);
-     this.route.navigateByUrl("/produit")
-   })
-   }
-   onSelectFile(event:any){
-     this.selectFile=event.target.files;
-
-   }
-   upload(){
-     this.progres = 0;
-     this.currenceFileUpload = this.selectFile.item(0);
-     this.produitService.uploadPhoto(this.currenceFileUpload,this.produit.id).subscribe(event=>{
-       if(event.type===HttpEventType.UploadProgress){
-         this.progres = Math.round(100 * event.loaded)
-       }
-       else if(event instanceof HttpResponse){
-         alert ("probleme de chargement..")
-       }
-
-     },err=>{
-       alert("probleme de chargement..")
-     })
-
-   }
+  public getCategorie(){
+    this.categorieService.getCategorie()
+    .subscribe(data=>{this.categorieService.list=data
+      this.categories= data;
+    },
+      err=>{console.log(err)})
+  }
+  saveProduit(){
+    const formData= new FormData();
+    formData.append("produit",JSON.stringify(this.produit));
+    formData.append("idCat",JSON.stringify(this.categorie));
+    this.produitService.saveProduit(formData);
+  }
+  
 
 }

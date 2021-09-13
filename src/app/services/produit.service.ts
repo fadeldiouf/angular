@@ -9,9 +9,10 @@ import { Produit } from '../models/produit';
 })
 export class ProduitService {
 
-  public host:string="http://localhost:8091/produits"
+  public host:string="http://localhost:8091/produits";
   list!: Produit[];
-  public formData!: FormGroup
+  public formData!: FormGroup;
+  choixmenu:string ='A';
   constructor( private httpClient:HttpClient) { }
  public getProduit(id:number):Observable<object>{
     return this.httpClient.get(`${this.host}/${id}`)
@@ -25,14 +26,10 @@ public  createProduit(data:object):Observable<object>{
  public getAll():Observable<any>{
     return this.httpClient.get(`${this.host+"/all"}`)
   }
-  public uploadPhoto(file:File,id:any):Observable<HttpEvent<{}>>{
-    let formData: FormData= new FormData()
-    formData.append('file',file)
-    const req= new HttpRequest('POST',this.host+"/uploadphoto"+id,formData,{
-      reportProgress:true,
-      responseType:'text',
-    })
-    return this.httpClient.request(req)
-
+  public getUrl(url:any){
+    return this.httpClient.get(this.host+url)
+  }
+  public  saveProduit(formData:FormData){
+    return this.httpClient.post(`${this.host+"/saveProduit"}`,formData)
   }
 }

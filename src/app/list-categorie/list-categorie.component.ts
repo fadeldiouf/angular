@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Categorie } from '../categorie';
 import { CategorieService } from '../services/categorie.service';
@@ -10,8 +11,11 @@ import { CategorieService } from '../services/categorie.service';
   styleUrls: ['./list-categorie.component.css']
 })
 export class ListCategorieComponent implements OnInit {
-  constructor( public categorieService:CategorieService ,private route:Router) { }
-categorie!:Categorie
+  public categorie!:Categorie;
+  control: FormControl= new FormControl('');
+  constructor( public categorieService:CategorieService ,public route:Router,
+    public builderForm: FormBuilder) { }
+
   ngOnInit(): void {
     this.getCategorie();
 
@@ -21,9 +25,11 @@ categorie!:Categorie
     .subscribe(data=>{this.categorieService.list=data},
       err=>{console.log(err)})
   }
-  onEditCategorie(c: any){
-    let url=c._links.self.href;
-   this.route.navigateByUrl("/updatecategorie/"+btoa(url));
+  SelectCategorie(data:Categorie){
+    this.categorieService.choixmenu='M'
+    this.categorieService.formData=this.builderForm.group(Object.assign({},data))
+    this.route.navigateByUrl("/addcategorie")
+
   }
 
 }

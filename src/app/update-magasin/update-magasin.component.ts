@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+import { Gerant } from '../models/gerant';
+import { GerantService } from '../services/gerant.service';
 import { MagasinService } from '../services/magasin.service';
 
 @Component({
@@ -10,8 +12,12 @@ import { MagasinService } from '../services/magasin.service';
   styleUrls: ['./update-magasin.component.css']
 })
 export class UpdateMagasinComponent implements OnInit {
+  idGerant!:number;
+  gerants!:Gerant[];
+  gerant!: Gerant;
 
-  constructor(public magasinService:MagasinService, public toastr:ToastrModule,
+  constructor(public magasinService:MagasinService,public gerantService:GerantService,
+     public toastr:ToastrModule,
     public route:Router, public formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
@@ -39,6 +45,28 @@ export class UpdateMagasinComponent implements OnInit {
     this.route.navigateByUrl("/magasin")
   })
   }
+  public getGerant(){
+    return this.gerantService.getAll()
+    .subscribe(data=>{this.gerantService.list=data
+    this.gerants = data
+  },
+      err=>{console.log(err)}
+      )
+  }
+
+  public getGerantById(id:number){
+    return this.gerantService.getGerant(this.idGerant)
+    .subscribe(data=>{
+      this.gerant = data
+  },
+      err=>{console.log(err)}
+      )
+  }
+
+  onChange(event:any) {
+    this.idGerant = event
+    this.getGerantById(this.idGerant)
+}
 
 
 }

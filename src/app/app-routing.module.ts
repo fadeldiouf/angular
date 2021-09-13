@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddDepotComponent } from './depots/add-depot/add-depot.component';
+import { ListDepotComponent } from './depots/list-depot/list-depot.component';
 import { ListCategorieComponent } from './list-categorie/list-categorie.component';
-import { ListDepotComponent } from './list-depot/list-depot.component';
 import { ListFournisseurComponent } from './list-fournisseur/list-fournisseur.component';
 import { ListGerantComponent } from './list-gerant/list-gerant.component';
 import { ListMagasinComponent } from './list-magasin/list-magasin.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
  {path:"produit",component:ListProduitComponent},
  {path:"",redirectTo:"produit",pathMatch:"full"},
  {path:"addcategorie",component:NewCategorieComponent},
- {path:"updatecategorie/:id",component:UpdateCategorieComponent},
+ {path:"updatecategorie",component:UpdateCategorieComponent},
  {path:"addfournisseur", component:NewFournisseurComponent},
  {path:"updatefournisseur",component:UpdateFournisseurComponent},
  {path:"gerant", component:ListGerantComponent},
@@ -32,7 +33,9 @@ const routes: Routes = [
  {path:"magasin",component:ListMagasinComponent},
  {path:"addmagasin",component:NewMagasinComponent},
  {path:"updatemagasin",component:UpdateMagasinComponent},
- {path:"addproduit",component:NewProduitComponent}
+ {path:"addproduit",component:NewProduitComponent},
+ {path:"adddepot",component:AddDepotComponent}
+
 
 
 

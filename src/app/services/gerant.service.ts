@@ -9,12 +9,12 @@ import { Gerant } from '../models/gerant';
 })
 export class GerantService {
   public host="http://localhost:8091/gerants"
-choixmenu: string= 'A';
+  choixmenu: string= 'A';
   list!: Gerant[];
   public formData!: FormGroup
   constructor( private httpClient:HttpClient) { }
- public getGerant(id:number):Observable<object>{
-    return this.httpClient.get(`${this.host}/${id}`)
+ public getGerant(id:number):Observable<Gerant>{
+    return this.httpClient.get<Gerant>(`${this.host}/${id}`)
   }
 public  createGerant(data:object):Observable<object>{
     return this.httpClient.post(`${this.host+"/save"}`,data)

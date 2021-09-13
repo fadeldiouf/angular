@@ -26,4 +26,7 @@ export class FournisseurService {
   public getAll():Observable<any>{
     return this.httpClient.get(`${this.host+"/all"}`)
   }
+  public getFournisseur(id:number):Observable<Fournisseur>{
+    return this.httpClient.get<Fournisseur>(`${this.host}/${id}`);
+  }
 }

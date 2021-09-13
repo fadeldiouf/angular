@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Gerant } from '../models/gerant';
+import { Magasin } from '../models/magasin';
 import { GerantService } from '../services/gerant.service';
 import { MagasinService } from '../services/magasin.service';
 
@@ -12,6 +14,9 @@ import { MagasinService } from '../services/magasin.service';
 })
 export class NewMagasinComponent implements OnInit {
 
+   gerants !: Gerant[];
+   gerant !: Gerant;
+   idGerant !:number;
   constructor(public magasinService:MagasinService, public toastr:ToastrService,
     public route:Router, public formBuilder:FormBuilder,
     public gerantService:GerantService
@@ -20,6 +25,8 @@ export class NewMagasinComponent implements OnInit {
   ngOnInit(): void {
     if(this.magasinService.choixmenu=='A'){
       this.infoForm();
+      this.getGerant()
+
     }
   }
   infoForm(){
@@ -29,6 +36,7 @@ export class NewMagasinComponent implements OnInit {
       addresse:['',[Validators.required]],
       telephone:['',[Validators.required]],
       email:['',[Validators.required]],
+      gerant:['',[Validators.required]],
     }
 
     )
@@ -37,10 +45,35 @@ export class NewMagasinComponent implements OnInit {
     this.magasinService.formData.reset
   }
   onSubmit(){
-   this.magasinService.createMagasin(this.magasinService.formData.value)
+   let magasin :Magasin
+   magasin = this.magasinService.formData.value
+   magasin.gerant = this.gerant
+   this.magasinService.createMagasin(magasin)
    .subscribe(data=>{console.log(data);
+    this.toastr.success('le magasin a ete bien enregister');
     this.route.navigateByUrl("/magasin")
   })
   }
+  public getGerant(){
+    return this.gerantService.getAll()
+    .subscribe(data=>{this.gerantService.list=data
+    this.gerants = data
+  },
+      err=>{console.log(err)}
+      )
+  }
 
+  public getGerantById(id:number){
+    return this.gerantService.getGerant(this.idGerant)
+    .subscribe(data=>{
+      this.gerant = data
+  },
+      err=>{console.log(err)}
+      )
+  }
+
+  onChange(event:any) {
+    this.idGerant = event
+    this.getGerantById(this.idGerant)
+}
 }

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListCategorieComponent } from './list-categorie/list-categorie.component';
 import { ListFournisseurComponent } from './list-fournisseur/list-fournisseur.component';
-import { ListDepotComponent } from './list-depot/list-depot.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { NewCategorieComponent } from './new-categorie/new-categorie.component';
@@ -25,14 +24,19 @@ import { NewMagasinComponent } from './new-magasin/new-magasin.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+import {MatDialogModule, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import{MatToolbarModule}from '@angular/material/toolbar';
+import { AddDepotComponent } from './depots/add-depot/add-depot.component'
+import { ListDepotComponent } from './depots/list-depot/list-depot.component';
+
+const Material_Module=[MatToolbarModule,MatIconModule];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListCategorieComponent,
     ListFournisseurComponent,
-    ListDepotComponent,
     ListProduitComponent,
     NewCategorieComponent,
     UpdateCategorieComponent,
@@ -44,7 +48,10 @@ import { DatePipe } from '@angular/common';
     UpdateGerantComponent,
     ListMagasinComponent,
     UpdateMagasinComponent,
-    NewMagasinComponent
+    NewMagasinComponent,
+    AddDepotComponent,
+    ListDepotComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -57,15 +64,15 @@ import { DatePipe } from '@angular/common';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-
-
-
-
-
-
+    MatDialogModule,
+    CommonModule,
+    
+  ],
+  exports:Material_Module,
+  providers: [DatePipe, {provide: MAT_DIALOG_DATA, useValue:{},
+  },{provide:MatDialogRef,useValue:{},}
 
   ],
-  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

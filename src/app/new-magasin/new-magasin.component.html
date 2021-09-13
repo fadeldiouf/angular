@@ -7,33 +7,35 @@
       <form [formGroup]="this.magasinService.formData" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label  class="control-label" >Nom</label>
-          <input class="form-control" type="text" formControlName="nom" >
+          <input class="form-control" type="text" formControlName="nom" required >
         </div>
         <div class="form-group">
           <label  class="control-label" >Date</label>
-          <input class="form-control" type="date" formControlName="date" >
+          <input class="form-control" type="date" formControlName="date" required >
         </div>
         <div class="form-group">
           <label  class="control-label" >Addresse</label>
-          <input class="form-control" type="text" formControlName="addresse" >
+          <input class="form-control" type="text" formControlName="addresse" required >
         </div>
         <div class="form-group">
           <label  class="control-label" >Telephone</label>
-          <input class="form-control" type="text" formControlName="telephone" >
+          <input class="form-control" type="text" formControlName="telephone" required >
         </div>
         <div class="form-group">
           <label  class="control-label" >Email</label>
-          <input class="form-control" type="text" formControlName="email" >
+          <input class="form-control" type="text" formControlName="email" required >
         </div>
-        <!-- <div class="form-group">
-          <label  class="control-label" >Gerant</label>
-          <select class="form-control" type="number" formControlName="gerant" >
+        <div class="form-group">
+          <label >Gerant</label>
+          <select class="form-control" type="text" formControlName="gerant" (ngModelChange)="onChange($event)"  required>
            <option value="0">-Selectionner</option>
-           <option *ngFor="let item of gerantService.list" value="{{item.id}}">{{item.nom}}{{item.prenom}}</option>
-          </select> -->
-        <!-- </div> -->
+
+           <option *ngFor="let item of gerants" value="{{item.id}}"
+           >{{item.nom}}{{item.prenom}}</option>
+          </select>
+        </div>
         <div class="form-group mt-3">
-          <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-database"></i> Enregistrer</button>
+          <button class="btn btn-success btn-sm" type="submit" [disabled]="this.magasinService.formData.invalid"><i class="fa fa-database"></i> Enregistrer</button>
           <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>
         </div>
       </form>
