@@ -40,7 +40,7 @@ fournisseur!:Fournisseur;
       date:   ['',[Validators.required]],
       quantiteinitial: ['',[Validators.required]],
       quantitecourant: ['',[Validators.required]],
-       fournisseur:     ['',[Validators.required]],
+      fournisseur:     ['',[Validators.required]],
 
     });
   }
