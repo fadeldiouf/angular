@@ -30,6 +30,6 @@ public  createProduit(data:object):Observable<object>{
     return this.httpClient.get(this.host+url)
   }
   public  saveProduit(formData:FormData){
-    return this.httpClient.post(`${this.host+"/saveProduit"}`,formData)
+    return this.httpClient.post(`${this.host+"/saveproduit"}`,formData)
   }
 }

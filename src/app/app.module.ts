@@ -29,6 +29,8 @@ import {MatDialogModule, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/d
 import{MatToolbarModule}from '@angular/material/toolbar';
 import { AddDepotComponent } from './depots/add-depot/add-depot.component'
 import { ListDepotComponent } from './depots/list-depot/list-depot.component';
+import { LoginComponent } from './utilisateurs/login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 const Material_Module=[MatToolbarModule,MatIconModule];
 
@@ -51,6 +53,8 @@ const Material_Module=[MatToolbarModule,MatIconModule];
     NewMagasinComponent,
     AddDepotComponent,
     ListDepotComponent,
+    LoginComponent,
+    MenuComponent,
 
   ],
   imports: [

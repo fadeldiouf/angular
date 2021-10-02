@@ -16,13 +16,14 @@ import { UpdateCategorieComponent } from './update-categorie/update-categorie.co
 import { UpdateFournisseurComponent } from './update-fournisseur/update-fournisseur.component';
 import { UpdateGerantComponent } from './update-gerant/update-gerant.component';
 import { UpdateMagasinComponent } from './update-magasin/update-magasin.component';
+import { LoginComponent } from './utilisateurs/login/login.component';
 
 const routes: Routes = [
  { path:"depot",component:ListDepotComponent} ,
  {path:"fournisseur",component:ListFournisseurComponent},
  {path:"categorie",component:ListCategorieComponent},
  {path:"produit",component:ListProduitComponent},
- {path:"",redirectTo:"produit",pathMatch:"full"},
+ {path:"",redirectTo:"utilisateur",pathMatch:"full"},
  {path:"addcategorie",component:NewCategorieComponent},
  {path:"updatecategorie",component:UpdateCategorieComponent},
  {path:"addfournisseur", component:NewFournisseurComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
  {path:"addmagasin",component:NewMagasinComponent},
  {path:"updatemagasin",component:UpdateMagasinComponent},
  {path:"addproduit",component:NewProduitComponent},
- {path:"adddepot",component:AddDepotComponent}
+ {path:"adddepot",component:AddDepotComponent},
+ {path:"utilisateur",component:LoginComponent}
 
 
 

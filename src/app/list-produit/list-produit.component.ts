@@ -13,7 +13,8 @@ public categories:any
 public produits:any
   constructor( public categorieService:CategorieService,
     public produitService:ProduitService, private router:Router,
-    private activieRoute:ActivatedRoute
+    private activieRoute:ActivatedRoute,
+    
     ) { }
 
   ngOnInit(): void {

@@ -1,32 +1,54 @@
-<!-- <div class="container">
+<app-menu></app-menu>
+<div class="container">
   <div class="col-md-9 col-sm-6 col-xs-12">
   <div class="card mt-3  border-primary">
     <div class="card-header text-center text-white bg-primary "> nouveau Produit</div>
 
     <div class="card-body">
-      <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label  class="control-label" >Nom</label>
-          <input class="form-control" type="text" formControlName="nom" >
+          <input class="form-control" type="text" name="nom" [(ngModel)]="produit.nom">
         </div>
         <div class="form-group">
           <label  class="control-label" >Description</label>
-          <input class="form-control" type="text" formControlName="description" >
+          <input class="form-control" type="text" name="description" [(ngModel)]="produit.description">
         </div>
         <div class="form-group">
           <label  class="control-label" >Prixunitaire</label>
-          <input class="form-control" type="text" formControlName="prixunitaire">
+          <input class="form-control" type="text" name="prixunitaire" [(ngModel)]="produit.prixunitaire">
 
         </div>
         <div class="form-group">
-          <label  class="control-label" >photo</label>
-          <input class="form-control" type="file" (change)="OnSelectFile($event)" >
+          <label  class="control-label" >Quantite en Stock</label>
+          <input class="form-control" type="text" name="quantite_stock" [(ngModel)]="produit.quantite_stock">
 
         </div>
-
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label >Categorie</label>
+            <select class="form-control" type="text" name="categorie"  id="categorie"  [(ngModel)]="categorie.id" required>
+             <option value="0">-Selectionner</option>
+             <option *ngFor="let item of categories" value="{{item.id}}"
+             >{{item.nom}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label >Depot</label>
+            <select class="form-control" type="text" name="depot"  id="depot" [(ngModel)]="depot.id" required>
+             <option value="0">-Selectionner</option>
+             <option *ngFor="let item of depots" value="{{item.id}}"
+             >{{item.libelle}}</option>
+            </select>
+          </div>
+         </div>
+        <div class="form-group">
+          <label  class="control-label" >photo</label>
+          <input class="form-control" type="file" accept="image/*" (change)="OnSelectFile($event)" >
+        </div>
+         
         <div class="form-group mt-3">
           <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-database"></i> Enregistrer</button>
-          <button  type="button" class=" btn btn-ontline-info ml-1" ><i></i> Reset</button>
         </div>
       </form>
 
@@ -36,4 +58,4 @@
 </div>
 
 
- -->
+
